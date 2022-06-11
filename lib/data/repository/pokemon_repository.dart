@@ -11,7 +11,7 @@ class PokemonRepository {
 
   PokemonRepository(this._client, this._pokemonListMapper, this._pokemonMapper);
 
-  Future<PokemonListModel> getPokemonList(int limit, int offset) async {
+  Future<List<PokemonListModel>> getPokemonList(int limit, int offset) async {
     return _client.getPokemonList(limit, offset)
       .then((value) => _pokemonListMapper.map(value));
   }

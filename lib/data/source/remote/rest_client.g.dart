@@ -9,7 +9,9 @@ part of 'rest_client.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps
 
 class _RestClient implements RestClient {
-  _RestClient(this._dio, {this.baseUrl});
+  _RestClient(this._dio, {this.baseUrl}) {
+    baseUrl ??= 'https://pokeapi.co/api/v2';
+  }
 
   final Dio _dio;
 
@@ -27,7 +29,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PokemonListResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'pokemon',
+                .compose(_dio.options, '/pokemon',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PokemonListResponse.fromJson(_result.data!);
@@ -43,7 +45,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PokemonResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'pokemon/${name}',
+                .compose(_dio.options, '/pokemon/${name}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PokemonResponse.fromJson(_result.data!);
