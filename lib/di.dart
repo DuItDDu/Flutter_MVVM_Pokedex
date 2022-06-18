@@ -20,7 +20,4 @@ Future<void> inject() async {
 
   /** Repository */
   getIt.registerLazySingleton(() => PokemonRepository(getIt(), getIt(), getIt()));
-
-  /** ViewModel */
-  getIt.registerFactory(() => PokemonListViewModel(getIt()));
 }

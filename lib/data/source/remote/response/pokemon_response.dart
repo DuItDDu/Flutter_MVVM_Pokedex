@@ -18,7 +18,9 @@ class PokemonResponse {
 
 @JsonSerializable()
 class PokemonStatResponse {
+  @JsonKey(name: "base_stat")
   int baseStat;
+
   PokemonStatNameResponse stat;
 
   PokemonStatResponse(this.baseStat, this.stat);
