@@ -32,14 +32,14 @@ Map<String, dynamic> _$PokemonResponseToJson(PokemonResponse instance) =>
 
 PokemonStatResponse _$PokemonStatResponseFromJson(Map<String, dynamic> json) =>
     PokemonStatResponse(
-      json['baseStat'] as int,
+      json['base_stat'] as int,
       PokemonStatNameResponse.fromJson(json['stat'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PokemonStatResponseToJson(
         PokemonStatResponse instance) =>
     <String, dynamic>{
-      'baseStat': instance.baseStat,
+      'base_stat': instance.baseStat,
       'stat': instance.stat,
     };
 
